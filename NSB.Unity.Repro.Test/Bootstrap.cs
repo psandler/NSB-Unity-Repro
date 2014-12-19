@@ -39,10 +39,13 @@ namespace NSB.Unity.Repro.Test
             bus.Start();
         }
 
-        public static IUnityContainer BootstrapContainer()
+        public static IUnityContainer BootstrapContainer(bool autoRegister)
         {
             var container = new UnityContainer();
-            AutoRegisterTypes(container);
+            if (autoRegister)
+            {
+                AutoRegisterTypes(container);
+            }
             container.RegisterType<INamedRegService, NamedRegService1>("1");
             container.RegisterType<INamedRegService, NamedRegService2>("2");
             container.RegisterType<INamedRegService, NamedRegService3>("3");
