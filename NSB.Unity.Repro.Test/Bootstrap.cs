@@ -21,6 +21,7 @@ namespace NSB.Unity.Repro.Test
             configuration.UseTransport<MsmqTransport>();
             configuration.UsePersistence<InMemoryPersistence>();
             configuration.EnableInstallers();
+            configuration.AssembliesToScan(AllAssemblies.Except("MyAssembly.dll"));
 
             var transactionSettings = configuration.Transactions();
             transactionSettings.Enable();
